@@ -408,14 +408,18 @@ function toEntriesObject(dict) {
     }
   ];
   Object.keys(dict).forEach(function(key) {
-    var entryKey = toEntries(key);
-    results[0].entryKeys.push(entryKey[0]);
-    results = results.concat(entryKey[0]);
+    if (dict[key] != null) {
+      var entryKey = toEntries(key);
+      results[0].entryKeys.push(entryKey[0]);
+      results = results.concat(entryKey[0]);
+    }
   });
   Object.keys(dict).forEach(function(key) {
-    var entryValue = toEntries(dict[key]);
-    results[0].entryValues.push(entryValue[0]);
-    results = results.concat(entryValue);
+    if (dict[key] != null) {
+      var entryValue = toEntries(dict[key]);
+      results[0].entryValues.push(entryValue[0]);
+      results = results.concat(entryValue);
+    }
   });
   return results;
 }
